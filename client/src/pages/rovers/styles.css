@@ -1,0 +1,17 @@
+.rover-main {
+  display: grid;
+  max-width: 550px;
+  margin: 10px auto 0;
+}
+
+.rover-main article {
+  border: 0px;
+  border-radius: 0px;
+  padding: 15px;
+  list-style-position: inside;
+  line-height: 1.4rem;
+}
+
+.rover-main li {
+    padding-left: 15px;
+}

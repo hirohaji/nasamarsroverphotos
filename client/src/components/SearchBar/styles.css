@@ -1,0 +1,99 @@
+form {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  align-items: center;
+}
+
+.search-bar {
+  max-width: 900px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+  font-size: 20px;
+}
+
+.input-container {
+  height: 35px;
+}
+
+.search-bar input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 2px 5px;
+  width: 80px;
+  font-size: inherit;
+  height: inherit;
+}
+
+.search-bar .inputDate {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 2px 5px;
+  width: min-content;
+  height: inherit;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.search-bar select {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: inherit;
+  height: inherit;
+}
+
+select:hover, input:hover, .inputDate:hover {
+  border-color: rgba(0, 0, 0, .87)
+}
+
+.input-container label {
+  padding: 0 10px;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .search-bar {
+    display: inline-table;
+    width: 100%;
+    font: inherit;
+    font-size: 18px;
+  }
+
+  .search-bar .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 2px 0;
+    height: auto;
+  }
+
+  .search-bar .input-container label {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  .search-bar .input-container input, .search-bar .input-container .inputDate {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    height: 44px;
+  }
+
+  .search-bar .input-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+}

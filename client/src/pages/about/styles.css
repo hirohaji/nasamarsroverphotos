@@ -1,0 +1,50 @@
+.main-about {
+    display: grid;
+    max-width: 550px;
+    margin: 25px auto 25px;
+}
+
+p {
+    text-align: justify;
+    text-indent: 2rem;
+    padding: 2rem;
+    line-height: 30px;
+}
+
+.signature {
+    text-align: end;
+}
+
+.about-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.about-element {
+    display: grid;
+    justify-items: center;
+    margin: 1rem;
+}
+
+.img {
+    width: 64px;
+    height: 64px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.git-img {
+    background: url("/GitHub-Mark-64px.png") round;
+}
+
+.nasa-img {
+    background: url("/nasa-favicon-192.png") round;
+}
+
+.git-img:hover {
+    opacity: 0.7;
+}
