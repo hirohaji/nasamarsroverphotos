@@ -4,26 +4,38 @@ import "./styles.css";
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.handleRoverChange = this.handleRoverChange.bind(this);
-    this.handleSolChange = this.handleSolChange.bind(this);
-    this.handleCameraChange = this.handleCameraChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      fieldRover: this.props.rover,
+      fieldSol: this.props.sol,
+      fieldCamera: this.props.camera
+    }
   }
 
-  handleRoverChange(e) {
-    this.props.onRoverChange(e.target.value);
-  }
+  handleRoverChange = e => {
+    this.setState({fieldRover: e.target.value})
+    //this.props.onRoverChange(e.target.value);
+  };
 
-  handleSolChange(e) {
-    this.props.onSolChange(e.target.value);
-  }
+  handleSolChange = e => {
+    this.setState({fieldSol: e.target.value})
+    //this.props.onSolChange(e.target.value);
+  };
 
-  handleCameraChange(e) {
-    this.props.onCameraChange(e.target.value);
-  }
+  handleCameraChange = e => {
+    this.setState({fieldCamera: e.target.value})
+    //this.props.onCameraChange(e.target.value);
+  };
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit = e => {
+    this.updateState();
+    e.preventDefault();
+  };
+
+  updateState = () => {
+    this.props.onRoverChange(this.state.fieldRover);
+    this.props.onSolChange(this.state.fieldSol);
+    this.props.onCameraChange(this.state.fieldCamera);
   }
 
   render() {
@@ -38,7 +50,7 @@ class SearchBar extends React.Component {
         </div>
         <div className="input-container">
           <label htmlFor="sol">Day in Mars</label>
-          <input 
+          <input
             id="sol"
             type="text"
             defaultValue={this.props.sol}
@@ -47,10 +59,11 @@ class SearchBar extends React.Component {
         </div>
         <div className="input-container">
           <label htmlFor="date">Date</label>
-          <input className="inputDate" id="date" type="date" disabled/>
+          <input className="inputDate" id="date" type="date" disabled />
         </div>
         <div className="input-container">
-          <select disabled
+          <select
+            disabled
             defaultValue={this.props.camera}
             onChange={this.handleCameraChange}
           >
@@ -59,6 +72,11 @@ class SearchBar extends React.Component {
             <option value="RHAZ">RHAZ</option>
             <option value="MAST">MAST</option>
           </select>
+        </div>
+        <div className="input-container">
+          <button onClick={this.updateState}>
+            <span>Search</span>
+          </button>
         </div>
       </form>
     );
