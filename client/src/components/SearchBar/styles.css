@@ -32,7 +32,7 @@ form {
   height: inherit;
 }
 
-input[type=date]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
@@ -44,8 +44,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: inherit;
 }
 
-select:hover, input:hover, .inputDate:hover {
-  border-color: rgba(0, 0, 0, .87)
+select:hover,
+input:hover,
+.inputDate:hover {
+  border-color: rgba(0, 0, 0, 0.87);
 }
 
 .input-container label {
@@ -62,7 +64,7 @@ select:hover, input:hover, .inputDate:hover {
 }
 
 .search-bar button:hover {
-  opacity: .8;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .search-bar button:focus {
@@ -72,7 +74,7 @@ select:hover, input:hover, .inputDate:hover {
 .search-bar button span {
   font-size: 14px;
   font-weight: 500;
-  color: #FFF;
+  color: #fff;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
@@ -101,7 +103,8 @@ select:hover, input:hover, .inputDate:hover {
     height: inherit;
   }
 
-  .search-bar .input-container input, .search-bar .input-container .inputDate {
+  .search-bar .input-container input,
+  .search-bar .input-container .inputDate {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;

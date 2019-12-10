@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Main from "./pages/main";
 import Photo from "./pages/photo";
 import Rovers from "./pages/rovers";
+import Latest from "./pages/latest";
 import About from "./pages/about";
 
 const Routes = () => (
@@ -12,6 +13,7 @@ const Routes = () => (
     <Switch>
       <Route path="/photo" component={Photo} />
       <Route path="/rovers" component={Rovers} />
+      <Route path="/latest" component={Latest} />
       <Route path="/about" component={About} />
       <Route path="/" component={Main} />
     </Switch>

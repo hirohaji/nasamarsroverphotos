@@ -29,6 +29,16 @@ app.get("/api/rovers", (req, res) => {
     });
 });
 
+app.get("/api/rovers/:rover/latest_photos", (req, res) => {
+  apiNasa
+    .get(
+      `v1/rovers/${req.params.rover}/latest_photos?api_key=${process.env.API_KEY}`
+    )
+    .then(data => {
+      res.json(data.data);
+    });
+});
+
 app.get("/api/test", (req, res) => {
   console.log("api/test", req.params);
   res.json({ test: "ok" });

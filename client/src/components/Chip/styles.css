@@ -1,0 +1,25 @@
+.chip {
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  text-align: center;
+  padding: 0.5rem;
+  margin-left: 10px;
+  border-radius: 32px;
+  border: 0;
+  width: 90px;
+  cursor: pointer;
+}
+
+.chip:first-child {
+  margin-left: 0;
+}
+
+.chip:hover {
+  background-color: #0b3d91;
+}
+
+.selected {
+  background-color: #0b3d91;
+  cursor: auto;
+}

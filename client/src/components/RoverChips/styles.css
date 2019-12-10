@@ -1,0 +1,11 @@
+.rover-chips-bar {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 15px auto;
+  padding: 0 15px;
+  font-size: 16px;
+}
+
+

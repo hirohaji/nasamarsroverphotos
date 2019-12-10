@@ -10,7 +10,7 @@ const NavigationBar = () => (
     <a className="button ButtonBase" tabIndex="0" href="/rovers">
       <span className="ButtonLabel">Rovers</span>
     </a>
-    <a className="button ButtonBase" tabIndex="0" href="/#">
+    <a className="button ButtonBase" tabIndex="0" href="/latest">
       <span className="ButtonLabel">Latest</span>
     </a>
     <a className="button ButtonBase" tabIndex="0" href="/about">
