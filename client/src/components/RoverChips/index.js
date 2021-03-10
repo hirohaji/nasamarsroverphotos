@@ -4,7 +4,7 @@ import Chip from "../Chip";
 import "./styles.css";
 
 class RoverChips extends React.Component {
-  rovers = ["curiosity", "opportunity", "spirit"];
+  rovers = ["curiosity", "opportunity", "spirit", "perseverance"];
 
   render() {
     return (
