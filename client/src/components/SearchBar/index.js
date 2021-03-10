@@ -43,6 +43,7 @@ class SearchBar extends React.Component {
       <form className="search-bar" onSubmit={this.handleSubmit}>
         <div className="input-container">
           <select onChange={this.handleRoverChange}>
+            <option value="perseverance">Perseverance</option>
             <option value="curiousity">Curiousity</option>
             <option value="opportunity">Opportunity</option>
             <option value="spirit">Spirit</option>
