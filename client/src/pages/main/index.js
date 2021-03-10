@@ -11,7 +11,7 @@ export default class Main extends Component {
     super(props);
 
     this.state = {
-      rover: "curiosity",
+      rover: "perseverance",
       sol: 0,
       date: "",
       camera: "all",
