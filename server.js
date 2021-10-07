@@ -10,13 +10,24 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 // Put all API endpoints under '/api'
 app.get("/api/rovers/:rover/photos", (req, res) => {
-  apiNasa
+  if (req.query.sol) {
+    apiNasa
     .get(
       `v1/rovers/${req.params.rover}/photos?sol=${req.query.sol}&page=${req.query.page}&api_key=${process.env.API_KEY}`
     )
     .then(data => {
       res.json(data.data);
     });
+  } else if (req.query.earth_date) {
+    apiNasa
+    .get(
+      `v1/rovers/${req.params.rover}/photos?earth_date=${req.query.earth_date}&page=${req.query.page}&api_key=${process.env.API_KEY}`
+    )
+    .then(data => {
+      res.json(data.data);
+    });
+  }
+  
 });
 
 app.get("/api/rovers", (req, res) => {
