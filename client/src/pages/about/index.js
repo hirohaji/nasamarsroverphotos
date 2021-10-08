@@ -10,7 +10,7 @@ export default class Photo extends Component {
           <h1>Mars Rover Photos</h1>
           <p>
             This is a project in React.js to consume a NASA API providing images
-            gathered by Curiosity, Opportunity, and Spirit rovers on Mars. Their
+            gathered by the rovers Perseverance, Curiosity, Opportunity, and Spirit on Mars. Their
             objective with the open APIs is to make data more easily available
             to other developers, educators, and citizen scientists.
           </p>
@@ -19,7 +19,7 @@ export default class Photo extends Component {
             <div className="about-element">
               GitHub code
               <a
-                href="https://github.com/hirohaji/nasa-mars-rover-photos"
+                href="https://github.com/hirohaji/nasamarsroverphotos"
                 target="_blank"
                 rel="noopener noreferrer"
               >

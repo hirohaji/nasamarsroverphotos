@@ -51,22 +51,18 @@ export const LazyImage = ({ photo, src, alt }) => {
         };
     }, [src, imageSrc, imageRef]);
 
-    return ( <
-        article key = { photo.id } >
-        <
-        strong > Photo# { photo.id } < /strong>  <
-        div className = "image"
+    return (
+      <article key = { photo.id } >
+        <strong> Photo# { photo.id } </strong> 
+        <div className = "image"
         ref = { setImageRef }
         alt = { alt }
         onLoad = { onLoad }
         onError = { onError } >
-        <
-        img src = { imageSrc }
-        />  <
-        /div>
+          <img src = { imageSrc } /> 
+        </div>
 
-        <
-        /article>
+      </article>
     );
 };
 
