@@ -13,9 +13,10 @@ export default class Main extends Component {
     this.state = {
       rover: "perseverance",
       sol: 0,
-      date: "",
+      earthDate: "",
       camera: "all",
       photos: [],
+      searchBySol: true,
       page: 1,
       isLoading: false,
       hasMore: true,
@@ -24,7 +25,7 @@ export default class Main extends Component {
 
     window.onscroll = () => {
       const {
-        loadPhotos,
+        loadPhotos: loadPhotos,
         state: { error, isLoading, hasMore }
       } = this;
 
@@ -46,28 +47,51 @@ export default class Main extends Component {
   }
 
   loadPhotos = () => {
-    const { rover, sol, page } = this.state;
+    const { rover, sol, earthDate, searchBySol, page } = this.state;
     this.setState({ isLoading: true });
-    fetch(`/api/rovers/${rover}/photos?sol=${sol}&page=${page}`)
-      .then(response => {
-        response.json().then(responseJson => {
-          if (responseJson.photos.length !== 0) {
-            this.setState({
-              photos: [...this.state.photos, ...responseJson.photos],
-              date: responseJson.photos[0].earth_date,
-              isLoading: false
-            });
-          } else {
-            this.setState({ hasMore: false, isLoading: false });
-          }
+    if (searchBySol) {
+      fetch(`/api/rovers/${rover}/photos?sol=${sol}&page=${page}`)
+        .then(response => {
+          response.json().then(responseJson => {
+            if (responseJson.photos.length !== 0) {
+              this.setState({
+                photos: [...this.state.photos, ...responseJson.photos],
+                earthDate: responseJson.photos[0].earth_date,
+                isLoading: false
+              });
+            } else {
+              this.setState({ hasMore: false, isLoading: false });
+            }
+          });
+        })
+        .catch(err => {
+          this.setState({
+            error: err.message,
+            isLoading: false
+          });
         });
-      })
-      .catch(err => {
-        this.setState({
-          error: err.message,
-          isLoading: false
+    } else {
+      fetch(`/api/rovers/${rover}/photos?earth_date=${earthDate}&page=${page}`)
+        .then(response => {
+          response.json().then(responseJson => {
+            if (responseJson.photos.length !== 0) {
+              this.setState({
+                photos: [...this.state.photos, ...responseJson.photos],
+                sol: responseJson.photos[0].sol,
+                isLoading: false
+              });
+            } else {
+              this.setState({ hasMore: false, isLoading: false });
+            }
+          });
+        })
+        .catch(err => {
+          this.setState({
+            error: err.message,
+            isLoading: false
+          });
         });
-      });
+    }
   };
 
   scrollTop = () => {
@@ -83,7 +107,7 @@ export default class Main extends Component {
         hasMore: true
       },
       () => {
-        this.loadPhotos();
+       this.loadPhotos();
       }
     );
   };
@@ -97,7 +121,34 @@ export default class Main extends Component {
         hasMore: true
       },
       () => {
-        this.loadPhotos();
+        //this.loadPhotos();
+      }
+    );
+  };
+
+  handleEarthDateChange = earthDate => {
+    this.setState(
+      {
+        photos: [],
+        earthDate: earthDate,
+        page: 1,
+        hasMore: true
+      },
+      () => {
+        //this.loadPhotos();
+      }
+    );
+  };
+
+  handleSearchBySolChange = searchBySol => {
+    this.setState(
+      {
+        photos: [],
+        searchBySol: searchBySol,
+        hasMore: true
+      },
+      () => {
+        //this.loadPhotos();
       }
     );
   };
@@ -109,7 +160,7 @@ export default class Main extends Component {
   };
 
   render() {
-    const { rover, sol, camera, photos, isLoading, hasMore, date } = this.state;
+    const { rover, sol, earthDate, searchBySol, camera, photos, isLoading, hasMore } = this.state;
 
     return (
       <div>
@@ -118,6 +169,10 @@ export default class Main extends Component {
           onRoverChange={this.handleRoverChange}
           sol={sol}
           onSolChange={this.handleSolChange}
+          earthDate={earthDate}
+          onEarthDateChange={this.handleEarthDateChange}
+          searchBySol={searchBySol}
+          onSearchBySolChange={this.handleSearchBySolChange}
           camera={camera}
           onCameraChange={this.handleCameraChange}
         />
@@ -126,7 +181,7 @@ export default class Main extends Component {
             <h1>
               <strong>{rover.toUpperCase()}</strong>
             </h1>
-            {date.length > 0 && <h2>Date: {displayDate(date)}</h2>}
+            {earthDate.length > 0 && <h2>Date: {displayDate(earthDate)}</h2>}
           </div>
           <div className="photo-list" id="photo-list">
             {photos.map(photo => (
@@ -145,7 +200,7 @@ export default class Main extends Component {
           )}
           {isLoading && <Loading />}
           <div className="sidenav">
-            <button onClick={this.scrollTop}>&#8679; Back to top</button>
+            <button onClick = { this.scrollTop() }>&#8679; Back to top</button>
           </div>
         </div>
       </div>

@@ -8,25 +8,39 @@ class SearchBar extends React.Component {
     this.state = {
       fieldRover: this.props.rover,
       fieldSol: this.props.sol,
+      fieldEarthDate: this.props.earthDate,
+      searchBySol: this.props.searchBySol,
       fieldCamera: this.props.camera
     }
   }
 
+  
   handleRoverChange = e => {
     this.setState({fieldRover: e.target.value})
     //this.props.onRoverChange(e.target.value);
   };
-
+  
   handleSolChange = e => {
-    this.setState({fieldSol: e.target.value})
+    this.setState({
+      fieldSol: e.target.value,
+      searchBySol: true
+    })
     //this.props.onSolChange(e.target.value);
   };
 
+  handleEarthDateChange = e => {
+    this.setState({
+      fieldEarthDate: e.target.value,
+      searchBySol: false
+    })
+    //this.props.onSolChange(e.target.value);
+  };
+  
   handleCameraChange = e => {
     this.setState({fieldCamera: e.target.value})
     //this.props.onCameraChange(e.target.value);
   };
-
+  
   handleSubmit = e => {
     this.updateState();
     e.preventDefault();
@@ -35,6 +49,8 @@ class SearchBar extends React.Component {
   updateState = () => {
     this.props.onRoverChange(this.state.fieldRover);
     this.props.onSolChange(this.state.fieldSol);
+    this.props.onEarthDateChange(this.state.fieldEarthDate);
+    this.props.onSearchBySolChange(this.state.searchBySol);
     this.props.onCameraChange(this.state.fieldCamera);
   }
 
@@ -51,16 +67,22 @@ class SearchBar extends React.Component {
         </div>
         <div className="input-container">
           <label htmlFor="sol">Day in Mars</label>
-          <input
-            id="sol"
-            type="text"
-            defaultValue={this.props.sol}
+          <input 
+            id="sol" 
+            type="text" 
+            defaultValue={this.props.sol} 
             onChange={this.handleSolChange}
           />
         </div>
         <div className="input-container">
-          <label htmlFor="date">Date</label>
-          <input className="inputDate" id="date" type="date" disabled />
+          <label htmlFor="earthDate">Earth date</label>
+          <input 
+           className="inputDate" 
+           id="earthDate" 
+           type="date" 
+           defaultValue={this.props.earthDate} 
+           onChange={this.handleEarthDateChange}
+          />
         </div>
         <div className="input-container">
           <select
