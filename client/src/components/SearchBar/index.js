@@ -60,7 +60,7 @@ class SearchBar extends React.Component {
         <div className="input-container">
           <select onChange={this.handleRoverChange}>
             <option value="perseverance">Perseverance</option>
-            <option value="curiousity">Curiousity</option>
+            <option value="curiosity">Curiosity</option>
             <option value="opportunity">Opportunity</option>
             <option value="spirit">Spirit</option>
           </select>
